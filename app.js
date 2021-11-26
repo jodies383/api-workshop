@@ -15,7 +15,7 @@ var templateAllCars = document.querySelector('.allCars').innerHTML
 var allCars = Handlebars.compile(templateAllCars)
 
 axios
-.get('https://api-tutor.herokuapp.com/v1/colors')
+.get('http://api-tutor.herokuapp.com/v1/colors')
 .then(function (result) {
     colors.innerHTML = carsTemplate({
         info: result.data
@@ -23,7 +23,7 @@ axios
 })
 
 axios
-.get('https://api-tutor.herokuapp.com/v1/makes')
+.get('http://api-tutor.herokuapp.com/v1/makes')
 .then(function (result) {
     brands.innerHTML = carsTemplate({
         info: result.data
@@ -31,7 +31,7 @@ axios
 })
 
 axios
-.get('https://api-tutor.herokuapp.com/v1/cars')
+.get('http://api-tutor.herokuapp.com/v1/cars')
 .then(function (result) {
     cars.innerHTML = allCars({
         car: result.data
@@ -46,7 +46,7 @@ function filter() {
     if (carColor && carBrand) {
 
         axios
-            .get(`https://api-tutor.herokuapp.com/v1/cars/make/${carBrand}/color/${carColor}`)
+            .get(`http://api-tutor.herokuapp.com/v1/cars/make/${carBrand}/color/${carColor}`)
             .then(function (result) {
                 cars.innerHTML = allCars({
                     car: result.data
@@ -56,7 +56,7 @@ function filter() {
     }
     else if (carColor) {
         axios
-            .get(`https://api-tutor.herokuapp.com/v1/cars/color/${carColor}`)
+            .get(`http://api-tutor.herokuapp.com/v1/cars/color/${carColor}`)
             .then(function (result) {
                 cars.innerHTML = allCars({
                     car: result.data
@@ -65,7 +65,7 @@ function filter() {
             })
     } else if (carBrand) {
         axios
-            .get(`https://api-tutor.herokuapp.com/v1/cars/make/${carBrand}`)
+            .get(`http://api-tutor.herokuapp.com/v1/cars/make/${carBrand}`)
             .then(function (result) {
                 cars.innerHTML = allCars({
                     car: result.data
@@ -74,7 +74,7 @@ function filter() {
             })
     } else {
         axios
-            .get('https://api-tutor.herokuapp.com/v1/cars')
+            .get('http://api-tutor.herokuapp.com/v1/cars')
             .then(function (result) {
                 cars.innerHTML = allCars({
                     car: result.data
